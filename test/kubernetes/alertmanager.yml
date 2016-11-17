@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: alertmanager
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: alertmanager
+      labels:
+        app: alertmanager
+
+    spec:
+      volumes:
+      - name: config
+        configMap: 
+          name: alertmanager
+
+      terminationGracePeriodSeconds: 300
+      containers:
+      - name: alertmanager
+        image: prom/alertmanager:v0.4.2
+        args:
+          - '-config.file=/etc/alertmanager/config/alertmanager.yml'
+          - '-storage.path=/alertmanager'
+        volumeMounts:
+        - name: config
+          mountPath: /etc/alertmanager/config

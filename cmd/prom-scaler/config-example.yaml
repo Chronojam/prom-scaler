@@ -1,0 +1,36 @@
+scalars:
+- type: "kubernetes-deployment"
+  deploymentname: test-deployment
+  scalenames:
+  - "prom_alert_test_deployment_overprovisioned"
+  - "prom_alert_test_deployment_underprovisoned"
+  namespace: default
+
+  kubernetesconnection:
+    in_cluster: true
+    config:
+      connection_info:
+      host: ""
+      username: ""
+      password: ""
+
+      # TLSCLientConfig
+      certfile: ""
+      keyfile: ""
+      cafile: ""
+
+      certdata: ""
+      keydata: ""
+      cadata: ""
+
+  #    apipath: ""
+  #    prefix: ""
+
+  #    bearertoken: ""
+  #    impersonate: ""
+
+  #    insecure: false
+  #    useragent: ""
+
+  #    qps: 5
+  #    burst: 10

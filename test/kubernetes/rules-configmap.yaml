@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rules
+data:
+  scale.rules: |-
+    # keep scaling up if we get more than 20 requests a second.
+    ALERT NotEnoughGoRoutines
+      IF rate(http_requests_total{handler="rules"}[1m]) > 20
+      LABELS {
+        scale_type = "up",
+        scale_name = "prom_alert_test_deployment_underprovisoned"
+      }
+      ANNOTATIONS {
+        summary = "SOMETHING",
+        description = "SOMETHINGELSE"
+      }
+
+    # keep scaling down while we have less than 10 a second
+    ALERT TooManyGoRoutines
+      IF rate(http_requests_total{handler="rules"}[1m]) < 10
+      LABELS {
+        scale_type = "down",
+        scale_name = "prom_alert_test_deployment_overprovisioned"
+      }
+      ANNOTATIONS {
+        summary = "SOMETHING",
+        description = "SOMETHINGELSE"
+      }

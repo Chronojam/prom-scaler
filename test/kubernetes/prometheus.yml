@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: prometheus
+      labels:
+        app: prometheus
+
+    spec:
+      volumes:
+      - name: config
+        configMap: 
+          name: prometheus
+      - name: rules
+        configMap:
+          name: rules
+
+      terminationGracePeriodSeconds: 300
+      containers:
+      - name: prometheus
+        image: prom/prometheus:v1.2.3
+        args:
+          - '-config.file=/etc/prometheus/config/prometheus.yml'
+          - '-alertmanager.url=http://alertmanager:9093'
+        volumeMounts:
+        - name: config
+          mountPath: /etc/prometheus/config
+        - name: rules
+          mountPath: /etc/prometheus/rules

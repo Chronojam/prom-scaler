@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: scaler
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: scaler
+      labels:
+        app: scaler
+
+    spec:
+      containers:
+      - name: scaler
+        image: quay.io/chronojam/prom-scaler:latest
