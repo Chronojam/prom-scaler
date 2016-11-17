@@ -1,0 +1,11 @@
+hash: f1f67f755b30474ea6c6545f50673424ff5c2db0129ae02cd4e82beb946b48e7
+updated: 2016-11-17T17:05:35.094175855Z
+imports:
+- name: gopkg.in/yaml.v2
+  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+- name: k8s.io/client-go
+  version: 89c60099837a47cfce19bd14e2d1f16c4670fd58
+  subpackages:
+  - 1.5/kubernetes
+  - 1.5/rest
+testImports: []

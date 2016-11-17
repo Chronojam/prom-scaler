@@ -5,16 +5,16 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/chronojam/prometheus-scaler/config"
-	"github.com/chronojam/prometheus-scaler/scaler"
+	"github.com/chronojam/prom-scaler/config"
+	"github.com/chronojam/prom-scaler/scaler"
 
-	_ "github.com/chronojam/prometheus-scaler/scaler/kubernetes"
+	_ "github.com/chronojam/prom-scaler/scaler/kubernetes"
 )
 
 var tt map[string]scaler.ScalableResource
 
 func main() {
-	config, err := config.Load("/home/calum/src/github.com/chronojam/prometheus-scaler/cmd/prom-scaler/config-example.yaml")
+	config, err := config.Load("/etc/scaler/config/config.yaml")
 	if err != nil {
 		panic(err)
 	}

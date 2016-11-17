@@ -1,7 +1,7 @@
 package scaler
 
 import (
-	"github.com/chronojam/prometheus-scaler/config"
+	"github.com/chronojam/prom-scaler/config"
 )
 
 var Drivers = make(map[string]Driver)

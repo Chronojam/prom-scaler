@@ -1,13 +1,13 @@
 FROM golang:1.7.3-alpine
 
-RUN 		apk update && \
-				apk upgrade && \
-				apk add git
+RUN 				apk update && \
+						apk upgrade && \
+						apk add git
 
-ADD 		. 	/build
-WORKDIR 		/build/cmd/prom-scaler
+COPY 		. 	/go/src/github.com/chronojam/prom-scaler
+WORKDIR 		/go/src/github.com/chronojam/prom-scaler
 
-RUN 		go get
-RUN 		go build -i -o prom-scaler .
+RUN 				ls -lrt
+RUN 				go build -i -o prom-scaler cmd/prom-scaler/*.go
 
-ENTRYPOINT ["prom-scaler"]
+ENTRYPOINT ["./prom-scaler"]

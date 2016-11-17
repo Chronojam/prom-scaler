@@ -1,8 +1,8 @@
 package kubernetes
 
 import (
-	"github.com/chronojam/prometheus-scaler/config"
-	"github.com/chronojam/prometheus-scaler/scaler"
+	"github.com/chronojam/prom-scaler/config"
+	"github.com/chronojam/prom-scaler/scaler"
 
 	"gopkg.in/yaml.v2"
 	//extensionsv1 "k8s.io/client-go/1.5/pkg/apis/extensions/v1beta1"
